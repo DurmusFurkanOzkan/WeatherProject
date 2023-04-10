@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Responsive Weather App</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+  <div class="main">
+    <div class="form">
+      <form class="" action="/" method="post">
+        <input type="text" name="cityName" value="" placeholder="Write a City Name" autocomplete="off">
+        <input type="submit" name="" value="Search">
+      </form>
+    </div>
+    <div class="top-container">
+      <h1>
+        <%=cityNameEjs%>
+      </h1>
+      <p class="date"><%=dateEjs%> </p>
+      <div class="top-bottom-container">
+        <div class="degree">
+          <div class="weather-icon">
+            <img id=weather_image src="<%=imageUrlEjs%>" alt="">
+          </div>
+          <div class="weather-degree">
+            <h1 id="today_temperature"><%=tempUrlEjs%>°</h1>
+            <p id="description"><%=descriptionUrlEjs%></p>
+          </div>
+        </div>
+        <div class="vl"></div>
+        <div class="statistics">
+          <div class="value">
+            <p><%=tempMaxEjs%>°</p>
+            <p class="desc">High</p>
+          </div>
+          <div class="value">
+            <p><%=windSpeedEjs%>mph</p>
+            <p class="desc">Wind</p>
+          </div>
+          <div class="value">
+            <p><%=sunriseEjs%></p>
+            <p class="desc">Sunrise</p>
+          </div>
+          <div class="value">
+            <p><%=tempMinEjs%>°</p>
+            <p class="desc">Low</p>
+          </div>
+          <div class="value">
+            <p><%=rainPopEjs%>%</p>
+            <p class="desc">Rain</p>
+          </div>
+          <div class="value">
+            <p><%=sunsetEjs%></p>
+            <p class="desc">Sunset</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bottom-container">
+      <h2 id="todays_weather">Todays Weather</h2>
+      <div class="hours_weather">
+        <% for(let i=0;i<6;i++){%>
+        <div class="container">
+          <p><%= contactsEjs.get(i).hour %></p>
+          <img class="weather_image" src="<%=contactsEjs.get(i).icon%>" alt="" >
+          <p><%= contactsEjs.get(i).degree %>°</p>
+        </div>
+        <%}%>
+      </div>
+
+    </div>
+
+  </div>
+
+</body>
+
+</html>
