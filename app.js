@@ -1,5 +1,6 @@
 const express = require('express');
 const https = require("https");
+const serverless = require('serverless-http');
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const app = express();
@@ -104,3 +105,11 @@ function CreateDate(sun) {
 
   return formattedTime;
 }
+
+
+
+app.use('/.netlify/functions/server', router);  // path must route to lambda
+app.use('/', (req, res) => res.sendFile(path.join(__dirname, '../index.html')));
+
+module.exports = app;
+module.exports.handler = serverless(app);
