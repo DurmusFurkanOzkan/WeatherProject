@@ -4,7 +4,7 @@ const serverless = require('serverless-http');
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const app = express();
-
+const router=express.Router();
 
 const contacts = new Map();
 const monthNames = ["January", "February", "March", "April", "May", "June",
@@ -33,7 +33,7 @@ app.post("/", function(req, res) {
 
 });
 
-app.listen(3000, function() {
+app.listen(process.env.PORT || 3000, function() {
   console.log("Server is running on port 3000.");
 })
 
@@ -107,9 +107,3 @@ function CreateDate(sun) {
 }
 
 
-
-app.use('/.netlify/functions/server', router);  // path must route to lambda
-app.use('/', (req, res) => res.sendFile(path.join(__dirname, '../index.html')));
-
-module.exports = app;
-module.exports.handler = serverless(app);
